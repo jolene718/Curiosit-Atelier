@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Curiosite Atelier </title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(rgba(254, 252, 253, 0.3), rgba(254, 242, 245, 0.3)),
+                        url('img/background.jpg') center/cover fixed;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .logo-link {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .main-logo {
+            width: min(600px, 80vw);
+            filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.5));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Float animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .logo-link:hover {
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f3ee;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 5px;
+            left: 60px;  
+        }
+        .search-icon img {
+            margin: 5px; 
+            width: 50px;
+            cursor: pointer;
+        }
+
+
+        .search-box {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.381);
+            display: none; 
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .search-input {
+            width: 30%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+
+        .search-box.active {
+            display: flex;
+        }
+
+        .login-icon {
+            position: absolute;
+            top: 5px;
+            right: 10px;  
+        }
+        .login-icon img {
+            margin: 5px; 
+            width: 60px;
+            cursor: pointer;
+        }
+
+        .category-container {
+            position: absolute;
+            top: 10px;
+            left: 10px; 
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .category-icon {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .category-icon img {
+            width: 50px;
+            cursor: pointer;
+        }
+        .category-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background-color: rgba(229, 239, 252, 0.356);
+            box-shadow: 0 4px 8px rgba(4, 30, 76, 0.619);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .category-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .category-menu a:hover {
+            background-color: #cdd0e7;
+        }
+        /* Menu item style */
+        .category-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: rgb(66, 69, 110); /* Set the font to purple */
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        /* Mouse hover effect */
+        .category-menu a:hover {
+            color: rgb(75, 167, 233); /* The font turns yellow when you hover over it */
+            background-color: rgba(255, 255, 255, 0.3); /* Slight background changes to increase visual feedback */
+        }
+
+        .category-menu.active {
+            display: block;
+        }
+
+        /* Star container */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        /* Star style */
+        .star {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 1) 20%, rgba(255, 220, 240, 0.8) 50%, rgba(255, 150, 250, 0) 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 120, 250, 0.9), 0 0 30px rgba(200, 100, 255, 0.6); /* Pink flare */
+            animation: twinkle 2s infinite ease-in-out alternate, float 5s infinite linear;
+        }
+
+        /* Star twinkle animation */
+        @keyframes twinkle {
+            0% { opacity: 0.4; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .login-box {
+            position: absolute;
+            top: 70px; /* Under the login icon */
+            right: 10px;
+            width: 300px;
+            background-color: rgba(128, 128, 128, 0.8); /* Gray semi-transparent */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1001;
+        }
+
+        .login-box.active {
+            display: block;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #B0E0E6;;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .login-box button:hover {
+            background-color: #7dd9e5;;
+        }
+
+        .login-box label {
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Register link style */
+        .register-link {
+            margin-top: 15px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .register-link a {
+            color: #f0f0f0;
+            text-decoration: underline;
+            text-decoration-color: #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .register-link a:hover {
+            color: #ffcc00; /* The text turns yellow when you hover over it */
+            text-decoration-color: #ffcc00; /* The underline turns yellow when you hover over it */
+        }
+    </style>
+    <script>
+        function toggleSearchBox() {
+            var searchBox = document.getElementById('search-box');
+            searchBox.classList.toggle('active');
+        }
+
+
+        function toggleCategoryMenu() {
+            document.querySelector(".category-menu").classList.toggle("active");
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const starContainer = document.querySelector(".stars");
+
+            function createStar() {
+                const star = document.createElement("div");
+                star.classList.add("star");
+
+                // Generate random position
+                star.style.top = Math.random() * 100 + "vh";
+                star.style.left = Math.random() * 100 + "vw";
+
+                // Generate random size
+                let size = Math.random() * 8 + 5; // 5px ~ 17px
+                star.style.width = size + "px";
+                star.style.height = size + "px";
+
+                // Random animation delay
+                star.style.animationDelay = Math.random() * 3 + "s";
+
+                starContainer.appendChild(star);
+
+                // 10 seconds later remove the star, to avoid page overload
+                setTimeout(() => {
+                    star.remove();
+                }, 10000);
+            }
+
+            // A new star is generated every 150ms
+            setInterval(createStar, 200);
+        });
+                
+
+        function toggleLoginBox() {
+            var loginBox = document.getElementById('login-box');
+            loginBox.classList.toggle('active');
+            
+            // Close other opened pop-up boxes
+            document.getElementById('search-box').classList.remove('active');
+            document.querySelector(".category-menu").classList.remove("active");
+        }
+
+        // Clicking outside the login box closes it
+        document.addEventListener('click', function(event) {
+            loginBox = document.getElementById('login-box');
+            loginIcon = document.querySelector('.login-icon');
+                
+            if (!loginBox.contains(event.target) && !loginIcon.contains(event.target)) {
+                    oginBox.classList.remove('active');
+            }
+        });
+    </script>
+
+</head>
+<body>
+<a href="index.html" class="logo-link">
+        <img src="img/logo.png" alt="Curiosite Atelier Logo" class="main-logo">
+    </a>
+
+    <div class="login-icon" onclick="toggleLoginBox()">
+        <img src="img/login-icon.png" alt="Login">
+    </div>
+    
+    <!-- Add login box -->
+    <div id="login-box" class="login-box">
+        <form>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username">
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+            
+            <button type="submit">Login</button>
+            <div class="register-link">
+                No account? <a href="Registration.html">Register</a>
+            </div>
+        </form>
+    </div>
+    
+    <div class="category-container">
+        <div class="category-icon" onclick="toggleCategoryMenu()">
+            <img src="img/category-icon.png" alt="Category">
+        </div>
+        <div class="category-menu">
+            <a href="Features.html">Features</a>
+            <a href="Men.html">Men</a>
+            <a href="Women.html">Women</a>
+        </div>
+    </div>
+
+    <div class="search-icon" onclick="toggleSearchBox()">
+        <img src="img/search-icon.png" alt="Search">
+    </div>
+    <div id="search-box" class="search-box">
+        <input type="text" placeholder="search..." class="search-input">
+        <button class="close-btn" onclick="toggleSearchBox()">×</button>
+    </div>
+    
+    <div class="stars"></div>
+
+    
+</body>
+</html>

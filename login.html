@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Demo | Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f0f9ff; color: #31405f; }
+    nav { display: flex; justify-content: space-between; align-items: center; background-color: #fff; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+    .nav-links { display: flex; gap: 15px; align-items: center; }
+    .nav-links a { text-decoration: none; color: #5f6b8b; }
+    .nav-links a:hover { color: #ff9dbf; }
+    .logo { width: 100px; height: auto; }
+    .login-container { max-width: 520px; margin: 50px auto; padding: 36px; background: #fff; border-radius: 12px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.08); text-align: center; }
+    .login-container h1 { margin-top: 0; }
+    .helper { margin-bottom: 24px; color: #67748f; }
+    .input-group { margin-bottom: 18px; text-align: left; }
+    .input-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+    .input-group input { width: 100%; padding: 12px; font-size: 1em; border: 1px solid #d0d6e1; border-radius: 8px; background-color: #f4f8fb; box-sizing: border-box; }
+    .submit-button { width: 100%; padding: 14px; background-color: #ff9dbf; color: #fff; border: none; border-radius: 8px; font-size: 1.05em; cursor: pointer; }
+    .submit-button:hover { background-color: #ff7e98; }
+    .register-link { display: inline-block; margin-top: 14px; color: #ff7e98; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="add-product.html">Add Product</a>
+      <a href="brands.html">Brands</a>
+    </div>
+    <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"></a>
+    <div class="nav-links">
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
+    </div>
+  </nav>
+
+  <main class="login-container">
+    <h1>Seller Demo Login</h1>
+    <p class="helper">This static course project now uses a lightweight demo sign-in. Register once locally, then sign in with the same username on this device.</p>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your demo password" required>
+      </div>
+      <button class="submit-button" type="submit">Login</button>
+      <a href="register.html" class="register-link">Need a demo account? Register</a>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

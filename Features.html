@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosité Atelier | Features</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        // Navigation bar scrolling effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 100) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+    <!--  CSS style -->
+    <style>
+        :root {
+            --primary: #B0E0E6;
+            --accent: #FF6F61;
+            --dark: #444;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } 
+        /*  Page basics */
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            scroll-behavior: smooth;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e3f2fd 100%);
+        }
+
+         /* Navigation bar style */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 8%;
+            position: fixed;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-family: 'Montserrat';
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* header button style */
+        .cta-button-header {
+            background: var(--primary);
+            color: white;
+            padding: 0.1rem 0.5rem;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Montserrat';
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Search box style */
+        .search-box{
+            display:flex;
+            align-items:self-start;
+        }
+
+        #search-input{
+            padding:0.3rem 1rem;
+            border:1px solid var(--dark);
+            border-radius:20px 0 0 20px;
+            font-family:'Roboto', sans-serif;
+            color:var(--dark);
+            margin-right:0.5rem;
+        }
+
+        #search-button{
+            padding:0.3rem 0.4rem;
+            border-radius:0 20px 20px 0;
+            background:var(--primary);
+            color:white;
+            border:none;
+            cursor:pointer;
+            transition:0.3s;
+        }
+       
+        .banner {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slides img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: quickSwitch 25s infinite linear;
+        }
+
+        .slides img:nth-child(1) { animation-delay: 0s; }
+        .slides img:nth-child(2) { animation-delay: 5s; }
+        .slides img:nth-child(3) { animation-delay: 10s; }
+        .slides img:nth-child(4) { animation-delay: 15s; }
+        .slides img:nth-child(5) { animation-delay: 20s; }
+
+        @keyframes quickSwitch {
+            0% { opacity: 1; }
+            18% { opacity: 1; }  
+            20% { opacity: 0; }  
+            100% { opacity: 0; }
+        }
+        
+        /*  === Overall layout ===  */
+        .shop-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /*  === Left screening area ===  */
+        .filter-section {
+            width: 20%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-section h2 {
+            font-size: 24px;
+            color: #4A4A4A;
+            margin-bottom: 15px;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .filter-group input {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        /*  === Commodity display area on the right ===  */
+        .product-gallery {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding-left: 20px;
+        }
+
+        /*  Merchandise card style */
+        .product {
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            background: #fff;
+            transition: transform 0.3s;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product p {
+            margin: 8px 0;
+            font-size: 18px;
+            color: #444;
+        }
+
+        .product .category {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        /*  Responsive layout  */
+        @media (max-width: 768px) {
+            .shop-container {
+                flex-direction: column;
+            }
+
+            .filter-section {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .product-gallery {
+                width: 100%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <img src="img/logo.png" width="60" height="37.2" alt="logo">
+        <h2 style="color: var(--primary);"onclick="window.location.href='index.html'">Curiosité Atelier</h2>
+        <div class="nav-links">
+            <a href="Home_Page.html"><h2>Home</h2></a>
+            <a href="Features.html"><h2>Features</h2></a>
+            <a href="Men.html"><h2>Men</h2></a>
+            <a href="Women.html"><h2>Women</h2></a>
+            <a href="About.html"><h2>About</h2></a>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button" class="cta-button-header" type="button" aria-label="Search">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
+        </div>
+    </nav>
+     <!--  Poster rotation area -->
+     <section class="banner">
+        <div class="slides">
+            <img src="img/banner1.jpg" alt="Banner 1">
+            <img src="img/banner2.jpg" alt="Banner 2">
+            <img src="img/banner3.jpg" alt="Banner 3">
+            <img src="img/banner4.jpg" alt="Banner 4">
+            <img src="img/banner5.jpg" alt="Banner 5">
+            <img src="img/banner1.jpg" alt="Banner 1"> 
+        </div>
+    </section>
+
+   
+    <!--  Poster rotation area -->
+    <section class="shop-container">
+
+        <!-- Left screening area -->
+        <div class="filter-section">
+            <h2>Filter</h2>
+        
+            <!--Gender screening-->
+            <div class="filter-group">
+                <h3>Gender</h3>
+                <label><input type="checkbox" value="gender-female"> Female</label>
+                <label><input type="checkbox" value="gender-male"> Male</label>
+                <label><input type="checkbox" value="gender-unisex"> Unisex</label>
+            </div>
+        
+            <!-- Category filtering -->
+            <div class="filter-group">
+                <h3>Category</h3>
+                <label><input type="checkbox" value="category-top"> Tops</label>
+                <label><input type="checkbox" value="category-bottom"> Bottoms</label>
+                <label><input type="checkbox" value="category-dress"> Dresses</label>
+                <label><input type="checkbox" value="category-accessories"> Accessories</label>
+                <label><input type="checkbox" value="category-shoes"> Shoes</label>
+            </div>
+        
+            <!-- Price Range filtering -->
+            <div class="filter-group">
+                <h3>Price Range</h3>
+                <label><input type="checkbox" data-min="10" data-max="50"> $10 - $50</label>
+                <label><input type="checkbox" data-min="50" data-max="100"> $50 - $100</label>
+                <label><input type="checkbox" data-min="100" data-max="0"> $100+</label>
+            </div>
+        </div>
+
+        <!-- Commodity display area on the right -->
+        <div class="product-gallery">
+            <div class="product">
+                <img src="img/product1.jpg" alt="Product 1">
+                <p class="category">Tops</p>
+                <p>$45</p>
+            </div>
+
+            <div class="product">
+                <img src="img/product2.jpg" alt="Product 2">
+                <p class="category">Bottoms</p>
+                <p>$60</p>
+            </div>
+
+            <div class="product">
+                <img src="img/product3.jpg" alt="Product 3">
+                <p class="category">Accessories</p>
+                <p>$20</p>
+            </div>
+
+            <div class="product">
+                <img src="img/product4.jpg" alt="Product 4">
+                <p class="category">Dress</p>
+                <p>$70</p>
+            </div>
+
+            <div class="product">
+                <img src="img/product5.jpg" alt="Product 5">
+                <p class="category">Bag</p>
+                <p>$35</p>
+            </div>
+
+            <div class="product">
+                <img src="img/product6.jpg" alt="Product 6">
+                <p class="category">Shoes</p>
+                <p>$80</p>
+            </div>
+
+            <div class="product">
+                <img src="img/product7.jpg" alt="Product 7">
+                <p class="category">Hat</p>
+                <p>$25</p>
+            </div>
+
+            <div class="product">
+                <img src="img/product8.jpg" alt="Product 8">
+                <p class="category">Sweater</p>
+                <p>$55</p>
+            </div>
+
+            <div class="product">
+                <img src="img/product9.jpg" alt="Product 9">
+                <p class="category">Jeans</p>
+                <p>$65</p>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+<script>
+    //Commodity display area on the right
+    const products = [
+        { name: 'Product 1', category: 'Tops', price: 45, gender: 'female', img: 'img/product1.jpg' },
+        { name: 'Product 2', category: 'Bottoms', price: 60, gender: 'male', img: 'img/product2.jpg' },
+        { name: 'Product 3', category: 'Accessories', price: 20, gender: 'unisex', img: 'img/product3.jpg' },
+        { name: 'Product 4', category: 'Dress', price: 70, gender: 'female', img: 'img/product4.jpg' },
+        { name: 'Product 5', category: 'Bag', price: 35, gender: 'unisex', img: 'img/product5.jpg' },
+        { name: 'Product 6', category: 'Shoes', price: 80, gender: 'male', img: 'img/product6.jpg' },
+        { name: 'Product 7', category: 'Hat', price: 25, gender: 'unisex', img: 'img/product7.jpg' },
+        { name: 'Product 8', category: 'Sweater', price: 55, gender: 'female', img: 'img/product8.jpg' },
+        { name: 'Product 9', category: 'Jeans', price: 65, gender: 'male', img: 'img/product9.jpg' }
+    ];
+    
+    // Initialization function
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialization function
+        renderProducts(products);
+        
+        // Event listening
+        document.querySelectorAll('.filter-group input').forEach(input => {
+            input.addEventListener('change', applyFilters);
+        });
+        
+        document.getElementById('search-button').addEventListener('click', applyFilters);
+        document.getElementById('search-input').addEventListener('input', applyFilters);
+    });
+    
+    // Synthetic screening function
+    function applyFilters() {
+        const searchQuery = document.getElementById('search-input').value.toLowerCase();
+        
+        // Get filter
+        const selectedGenders = getSelectedValues('gender');
+        const selectedCategories = getSelectedValues('category');
+        const selectedPrices = getSelectedPriceRanges();
+    
+        // Filter logic
+        const filtered = products.filter(product => {
+            return matchSearch(product, searchQuery) &&
+                   matchGender(product, selectedGenders) &&
+                   matchCategory(product, selectedCategories) &&
+                   matchPrice(product, selectedPrices);
+        });
+    
+        renderProducts(filtered);
+    }
+
+    // Helper function
+    function getSelectedValues(type) {
+        return Array.from(document.querySelectorAll(`input[type="checkbox"][value^="${type}"]:checked`))
+               .map(cb => cb.value.split('-')[1]);
+    }
+    
+    function getSelectedPriceRanges() {
+        return Array.from(document.querySelectorAll('input[type="checkbox"][data-min]:checked'))
+               .map(cb => ({
+                   min: parseInt(cb.dataset.min),
+                   max: parseInt(cb.dataset.max)
+               }));
+    }
+    
+    function matchSearch(product, query) {
+        return product.name.toLowerCase().includes(query);
+    }
+    
+    function matchGender(product, selected) {
+        return selected.length === 0 || selected.includes(product.gender);
+    }
+    
+    function matchCategory(product, selected) {
+        return selected.length === 0 || selected.includes(product.category.toLowerCase());
+    }
+    
+    function matchPrice(product, ranges) {
+        if (ranges.length === 0) return true;
+        return ranges.some(range => {
+            if (range.max === 0) return product.price >= range.min;
+            return product.price >= range.min && product.price <= range.max;
+        });
+    }
+    
+    // Rendering function
+    function renderProducts(products) {
+        const gallery = document.querySelector('.product-gallery');
+        gallery.innerHTML = products.map(product => `
+            <div class="product">
+                <img src="${product.img}" alt="${product.name}">
+                <p class="category">${product.category}</p>
+                <p>$${product.price}</p>
+            </div>
+        `).join('');
+    }
+    
+    // Navigation bar scrolling effect (keep the original)
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        navbar.style.boxShadow = window.scrollY > 100 ? '0 5px 20px rgba(0,0,0,0.1)' : 'none';
+    });
+    </script>
+</html>

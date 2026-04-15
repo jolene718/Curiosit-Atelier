@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Demo | Home</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f0f9ff; color: #31405f; }
+    nav { display: flex; justify-content: space-between; align-items: center; background-color: #fff; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+    .nav-links { display: flex; gap: 15px; align-items: center; }
+    .nav-links a, .nav-links button { text-decoration: none; color: #5f6b8b; background: none; border: none; font-size: 1em; cursor: pointer; padding: 0; }
+    .nav-links a:hover, .nav-links button:hover { color: #ff9dbf; }
+    .logo { width: 100px; height: auto; }
+    .page { max-width: 1200px; margin: 40px auto; padding: 0 20px 40px; }
+    .intro { background: #fff; border-radius: 12px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.08); padding: 28px; margin-bottom: 24px; }
+    .home-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .home-item { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.08); text-align: center; }
+    .home-item img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; }
+    .btn { display: inline-block; margin-top: 16px; padding: 12px 18px; background-color: #ff9dbf; color: #fff; text-decoration: none; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="add-product.html">Add Product</a>
+      <a href="brands.html">Brands</a>
+    </div>
+    <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"></a>
+    <div class="nav-links">
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
+      <button type="button" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="intro">
+      <h1>Seller Dashboard Demo</h1>
+      <p>This course project section has been cleaned up into a portfolio-safe front-end demo. It now focuses on navigation, product publishing flow, and local state rendering instead of pretending to connect to hidden PHP endpoints.</p>
+    </section>
+
+    <section class="home-container">
+      <article class="home-item">
+        <img src="img/home1.jpg" alt="Catalogue overview">
+        <h2>Browse Listings</h2>
+        <p>Review the seller catalogue and featured brand presentation.</p>
+        <a href="brands.html" class="btn">Explore Brands</a>
+      </article>
+      <article class="home-item">
+        <img src="img/home2.jpg" alt="Add product flow">
+        <h2>Publish Product</h2>
+        <p>Create a new local demo listing using the cleaned-up product form.</p>
+        <a href="add-product.html" class="btn">Add Your Product</a>
+      </article>
+      <article class="home-item">
+        <img src="img/home3.jpg" alt="Project notes">
+        <h2>View Status</h2>
+        <p>See how the order page has been reframed as a project-status explanation.</p>
+        <a href="orders.html" class="btn">Open Orders Page</a>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

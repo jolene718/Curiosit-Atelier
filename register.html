@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Demo | Register</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f0f9ff; color: #31405f; }
+    nav { display: flex; justify-content: space-between; align-items: center; background-color: #fff; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+    .nav-links { display: flex; gap: 15px; align-items: center; }
+    .nav-links a { text-decoration: none; color: #5f6b8b; }
+    .nav-links a:hover { color: #ff9dbf; }
+    .logo { width: 100px; height: auto; }
+    .register-container { max-width: 560px; margin: 50px auto; padding: 36px; background: #fff; border-radius: 12px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.08); text-align: center; }
+    .register-container h1 { margin-top: 0; }
+    .helper { margin-bottom: 24px; color: #67748f; }
+    .input-group { margin-bottom: 16px; text-align: left; }
+    .input-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+    .input-group input { width: 100%; padding: 12px; font-size: 1em; border: 1px solid #d0d6e1; border-radius: 8px; background-color: #f4f8fb; box-sizing: border-box; }
+    .submit-button { width: 100%; padding: 14px; background-color: #ff9dbf; color: #fff; border: none; border-radius: 8px; font-size: 1.05em; cursor: pointer; }
+    .submit-button:hover { background-color: #ff7e98; }
+    .login-link { display: inline-block; margin-top: 14px; color: #ff7e98; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="add-product.html">Add Product</a>
+      <a href="brands.html">Brands</a>
+    </div>
+    <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"></a>
+    <div class="nav-links">
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
+    </div>
+  </nav>
+
+  <main class="register-container">
+    <h1>Create a Demo Seller Account</h1>
+    <p class="helper">The registration flow now stores only public-facing profile data needed for the static demo. It does not publish or sync credentials anywhere.</p>
+    <form id="registerForm">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your public contact email" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="At least 6 characters" required>
+      </div>
+      <div class="input-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+      </div>
+      <button class="submit-button" type="submit">Register</button>
+      <a href="login.html" class="login-link">Already have a demo account? Login</a>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

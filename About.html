@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosité Atelier | About</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                navbar.style.boxShadow = window.scrollY > 100 ? '0 5px 20px rgba(0,0,0,0.1)' : 'none';
+            }
+        });
+    </script>
+    <style>
+        /* Implement search function */
+        :root {
+            --primary: #B0E0E6;
+            --accent: #FF6F61;
+            --dark: #444;
+            --pink: #ffc9e4;
+            --yellow: #f3df71;
+            --purple: #B19CD9;
+            --white: #fff;        
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navigation bar style */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 8%;
+            position: fixed;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-family: 'Montserrat';
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button-header {
+            background: var(--primary);
+            color: white;
+            padding: 0.1rem 0.5rem;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Montserrat';
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Search box style */
+        .search-box{
+            display:flex;
+            align-items:self-start;
+        }
+
+        #search-input{
+            padding:0.3rem 1rem;
+            border:1px solid var(--dark);
+            border-radius:20px 0 0 20px;
+            font-family:'Roboto', sans-serif;
+            color:var(--dark);
+            margin-right:0.5rem;
+        }
+
+        #search-button{
+            padding:0.3rem 0.4rem;
+            border-radius:0 20px 20px 0;
+            background:var(--primary);
+            color:white;
+            border:none;
+            cursor:pointer;
+            transition:0.3s;
+        }
+        
+        /* Basic styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, var(--pink), var(--primary));
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        /* Brand introduction*/
+        .hero-section {
+            border-bottom: 2px solid var(--yellow);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .brand-name {
+            font-size: 2.5rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .brand-statement {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Contact information */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            color: var(--dark);
+        }
+
+        .detail-item {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Team introduction */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .staff-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .staff-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Button interaction */
+        button {
+            background: var(--yellow);
+            border: none;
+            color: var(--dark);
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: var(--purple);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <img src="img/logo.png" width="60" height="37.2" alt="logo">
+        <h2 style="color: var(--primary);" onclick="window.location.href='index.html'">Curiosité Atelier</h2>
+        <div class="nav-links">
+            <a href="Home_Page.html"><h2>Home</h2></a>
+            <a href="Features.html"><h2>Features</h2></a>
+            <a href="Men.html"><h2>Men</h2></a>
+            <a href="Women.html"><h2>Women</h2></a>
+            <a href="About.html"><h2>About</h2></a>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button" class="cta-button-header" type="button" aria-label="Search">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- Brand introduction -->
+        <section class="hero-section">
+            <h1 class="brand-name">Curiosité Atelier</h1>
+            <p class="brand-statement">
+                Founded in 2025, Curiosité Atelier redefines streetwear with millennial sweetness and bold edge.  
+                Designed for those who dare to mix playful vibes with fearless fashion.
+            </p>
+        </section>
+
+        <!-- Contact information -->
+        <div class="contact-grid">
+            <div>
+                <h2 class="section-title">Our Headquarters</h2>
+                <div class="detail-item">
+                    <p>Rue de la Mode 23<br>
+                    75003 Paris<br>
+                    France</p>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="detail-item">
+                    <p>Tel: +1 019 003 2025<br>
+                    Email: hello@curiosite-atelier.example</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team introduction -->
+        <h2 class="section-title">Meet Our Crew</h2>
+        <div class="staff-grid">
+            <div class="staff-card">
+                <img src="img/pc.jpg" alt="CEO">
+                <h3>Chen Peng</h3>  
+                <p>Founder & CEO</p>
+            </div>
+
+            <div class="staff-card">
+                <img src="img/zzm.jpg" alt="Designer">
+                <h3>Zhuoma Zhou</h3>
+                <p>Creative Director</p>
+            </div>
+
+            <div class="staff-card">
+                <img src="img/mjt.jpg" alt="Marketing Lead">
+                <h3>Jiatong Ma</h3>
+                <p>Marketing Guru</p>
+            </div>
+        </div>
+
+        <!-- Contact buttons -->
+        <div class="contact">
+            <p>Want to collaborate? Let’s talk!</p>
+            <button onclick="alert('Email us at: hello@curiosite-atelier.example')">Contact Us</button>
+            
+        </div>
+        <div class="contact">
+            <p>Want to be a seller? Click here!</p>
+            <button onclick="window.location.href='brands.html'">Add Your Brand</button>
+        </div>
+    </div>
+</body>
+</html>

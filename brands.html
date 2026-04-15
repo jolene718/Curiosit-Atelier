@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Demo | Brands</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f0f9ff; color: #31405f; }
+    nav { display: flex; justify-content: space-between; align-items: center; background-color: #fff; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+    .nav-links { display: flex; gap: 15px; align-items: center; }
+    .nav-links a, .nav-links button { text-decoration: none; color: #5f6b8b; background: none; border: none; font-size: 1em; cursor: pointer; padding: 0; }
+    .nav-links a:hover, .nav-links button:hover { color: #ff9dbf; }
+    .logo { width: 100px; height: auto; }
+    .page { max-width: 1200px; margin: 40px auto; padding: 0 20px 40px; }
+    .section-card { background: #fff; border-radius: 12px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.08); padding: 28px; margin-bottom: 24px; }
+    .section-card h1, .section-card h2 { margin-top: 0; }
+    .product-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .product-item { background: #f8fbff; border-radius: 12px; overflow: hidden; border: 1px solid #e6edf7; }
+    .product-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+    .product-copy { padding: 18px; }
+    .empty-state { display: grid; place-items: center; min-height: 180px; text-align: center; }
+    .featured-brand { display: grid; grid-template-columns: 220px 1fr; gap: 20px; align-items: center; }
+    .featured-brand img { width: 100%; border-radius: 12px; object-fit: cover; }
+    .btn { display: inline-block; margin-top: 10px; padding: 12px 18px; background-color: #ff9dbf; color: #fff; text-decoration: none; border-radius: 8px; }
+    @media (max-width: 700px) { .featured-brand { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="add-product.html">Add Product</a>
+      <a href="brands.html">Brands</a>
+    </div>
+    <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"></a>
+    <div class="nav-links">
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
+      <button type="button" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="section-card">
+      <h1>Seller Listings</h1>
+      <p>This catalogue now renders only public-facing seller details and local demo listings.</p>
+      <div id="brandList" class="product-list"></div>
+    </section>
+
+    <section class="section-card">
+      <h2>Featured Brand</h2>
+      <div class="featured-brand">
+        <img src="img/brand1.jpg" alt="Curiosite Atelier featured brand">
+        <div>
+          <h3>Curiosite Atelier</h3>
+          <p>A concept streetwear label blending playful color, layered silhouettes, and youth-culture styling. This section stays as a showcase card for the brand identity side of the assignment.</p>
+          <a href="Home_Page.html" class="btn">View Showcase Site</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

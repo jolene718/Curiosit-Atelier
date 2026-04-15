@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosité Atelier | Men</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        // Navigation bar scrolling effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 100) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+    </script>
+
+    <style>
+        :root {
+            --primary: #B0E0E6;
+            --accent: #FF6F61;
+            --dark: #444;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } 
+        /*  page base Settings */
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            scroll-behavior: smooth;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e3f2fd 100%);
+        }
+
+        /* Navigation bar style */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 8%;
+            position: fixed;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-family: 'Montserrat';
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Navigation bar style */
+        .cta-button-header {
+            background: var(--primary);
+            color: white;
+            padding: 0.1rem 0.5rem;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Montserrat';
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Navigation bar style */
+        .search-box{
+            display:flex;
+            align-items:self-start;
+        }
+
+        #search-input{
+            padding:0.3rem 1rem;
+            border:1px solid var(--dark);
+            border-radius:20px 0 0 20px;
+            font-family:'Roboto', sans-serif;
+            color:var(--dark);
+            margin-right:0.5rem;
+        }
+
+        #search-button{
+            padding:0.3rem 0.4rem;
+            border-radius:0 20px 20px 0;
+            background:var(--primary);
+            color:white;
+            border:none;
+            cursor:pointer;
+            transition:0.3s;
+        }
+       
+        .banner {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slides img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: quickSwitch 25s infinite linear;
+        }
+
+        .slides img:nth-child(1) { animation-delay: 0s; }
+        .slides img:nth-child(2) { animation-delay: 5s; }
+        .slides img:nth-child(3) { animation-delay: 10s; }
+        .slides img:nth-child(4) { animation-delay: 15s; }
+        .slides img:nth-child(5) { animation-delay: 20s; }
+
+  
+        @keyframes quickSwitch {
+            0% { opacity: 1; }
+            18% { opacity: 1; }  
+            20% { opacity: 0; }  
+            100% { opacity: 0; }
+        }
+        
+        /*  === Overall layout===  */
+        .shop-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /*  === Left screening area ===  */
+        .filter-section {
+            width: 20%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-section h2 {
+            font-size: 24px;
+            color: #4A4A4A;
+            margin-bottom: 15px;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .filter-group input {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        /*  === Commodity display area on the right ===  */
+        .product-gallery {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding-left: 20px;
+        }
+
+        /*  Merchandise card style */
+        .product {
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            background: #fff;
+            transition: transform 0.3s;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product p {
+            margin: 8px 0;
+            font-size: 18px;
+            color: #444;
+        }
+
+        .product .category {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        /*  Merchandise card style */
+        @media (max-width: 768px) {
+            .shop-container {
+                flex-direction: column;
+            }
+
+            .filter-section {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .product-gallery {
+                width: 100%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="img/logo.png" width="60" height="37.2" alt="logo">
+        <h2 style="color: var(--primary);"onclick="window.location.href='index.html'">Curiosité Atelier</h2>
+        <div class="nav-links">
+            <a href="Home_Page.html"><h2>Home</h2></a>
+            <a href="Features.html"><h2>Features</h2></a>
+            <a href="Men.html"><h2>Men</h2></a>
+            <a href="Women.html"><h2>Women</h2></a>
+            <a href="About.html"><h2>About</h2></a>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button" class="cta-button-header" type="button" aria-label="Search">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Men</h1>
+    </section>
+
+    <section class="banner">
+        <div class="slides">
+            <img src="img/surfing.jpg" alt="surfing">
+            <img src="img/model1.jpg" alt="model1">
+            <img src="img/model2.jpg" alt="model2">
+            <img src="img/model3.jpg" alt="model3">
+            <img src="img/surfing.jpg" alt="surfing">
+        </div>
+    </section>
+
+    <section class="shop-container">
+        <div class="filter-section">
+            <h2>Filter</h2>
+
+            <div class="filter-group" id="category-filters">
+                <h3>Category</h3>
+                <label><input type="checkbox" value="T-shirt"> T-shirt</label>
+                <label><input type="checkbox" value="Hoodie"> Hoodies</label>
+                <label><input type="checkbox" value="Jacket"> Jackets</label>
+                <label><input type="checkbox" value="Hats"> Hats</label>
+                <label><input type="checkbox" value="accessories"> Accessories</label>
+                <label><input type="checkbox" value="Shoes"> Shoes</label>
+            </div>
+
+            <div class="filter-group" id="price-filters">
+                <h3>Price Range</h3>
+                <label><input type="checkbox" data-range="10-50"> $10 - $50</label>
+                <label><input type="checkbox" data-range="50-100"> $50 - $100</label>
+                <label><input type="checkbox" data-range="100-0"> $100+</label>
+            </div>
+        </div>
+
+        <div class="product-gallery" id="product-container">
+            <!-- The product will load dynamically via JavaScript -->
+        </div>
+    </section>
+
+    <script>
+        const products = [
+            { name: 'T-shirt 1', category: 'T-shirt', price: 20, img: 'img/Men_d/T1.jpg' },
+            { name: 'T-shirt 2', category: 'T-shirt', price: 25, img: 'img/Men_d/T2.jpg' },
+            { name: 'T-shirt 3', category: 'T-shirt', price: 30, img: 'img/Men_d/T3.jpg' },
+            { name: 'T-shirt 4', category: 'T-shirt', price: 25, img: 'img/Men_d/0.png' },
+            { name: 'T-shirt 5', category: 'T-shirt', price: 30, img: 'img/Men_d/1.png' },
+            { name: 'Hoodie 1', category: 'Hoodie', price: 35, img: 'img/Men_d/h1.jpg' },
+            { name: 'Hoodie 2', category: 'Hoodie', price: 35, img: 'img/Men_d/h2.jpg' },
+            { name: 'Hoodie 3', category: 'Hoodie', price: 40, img: 'img/Men_d/h3.jpg' },
+            { name: 'Jacket 1', category: 'Jacket', price: 35, img: 'img/Men_d/J1.jpg' },
+            { name: 'Jacket 2', category: 'Jacket', price: 40, img: 'img/Men_d/J2.jpg' },
+            { name: 'Jacket 3', category: 'Jacket', price: 45, img: 'img/Men_d/J3.jpg' },
+            { name: 'Jacket 4', category: 'Jacket', price: 50, img: 'img/Men_d/J4.jpg' },
+            { name: 'Shoes 1', category: 'Shoes', price: 70, img: 'img/Men_d/shoe1.jpg' }
+        ];
+
+        // Initialization function
+        document.addEventListener('DOMContentLoaded', function() {
+            displayProducts(products);
+            
+            // Fixed button ID spelling error
+            const searchButton = document.getElementById('search-button');
+            
+            //Event listening
+            document.querySelectorAll('.filter-group input').forEach(input => {
+                input.addEventListener('change', applyFilters);
+            });
+            
+            // Search for button click events
+            searchButton.addEventListener('click', function() {
+                const query = document.getElementById('search-input').value.trim().toLowerCase();
+                if (!query) {
+                    alert('Please enter the text!');
+                    return;
+                }
+                applyFilters();
+            });
+
+            //Return key event
+            document.getElementById('search-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const query = this.value.trim().toLowerCase();
+                    if (!query) {
+                        alert('Please enter the text!');
+                        return;
+                    }
+                    applyFilters();
+                }
+            });
+            
+            // Navigation bar scrolling effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                navbar.style.boxShadow = window.scrollY > 100 ? '0 5px 20px rgba(0,0,0,0.1)' : 'none';
+            });
+        });
+
+        // Navigation bar scrolling effect
+        function applyFilters() {
+            const searchInput = document.getElementById('search-input');
+            const searchQuery = searchInput.value.trim().toLowerCase();
+            
+            // Null search verification
+            if (searchInput.value.trim() === '' && 
+               !document.querySelectorAll('.filter-group input:checked').length) {
+                alert('Please enter search text or select filters!');
+                return;
+            }
+
+            // Get filter conditions
+            const selectedCategories = Array.from(
+                document.querySelectorAll('#category-filters input:checked')
+            ).map(checkbox => checkbox.value.toLowerCase());
+            
+            const selectedPrices = Array.from(
+                document.querySelectorAll('#price-filters input:checked')
+            ).map(checkbox => checkbox.dataset.range);
+
+            // Filter logic
+            const filtered = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchQuery);
+                const matchesCategory = selectedCategories.length === 0 || 
+                                     selectedCategories.includes(product.category.toLowerCase());
+                const matchesPrice = selectedPrices.length === 0 || selectedPrices.some(range => {
+                    const [min, max] = range.split('-').map(Number);
+                    return max === 0 ? product.price >= min : product.price >= min && product.price <= max;
+                });
+
+                return matchesSearch && matchesCategory && matchesPrice;
+            });
+
+            displayProducts(filtered);
+        }
+
+        function displayProducts(productsToDisplay) {
+            const container = document.getElementById('product-container');
+            container.innerHTML = productsToDisplay.map(product => `
+                <div class="product">
+                    <img src="${product.img}" alt="${product.name}">
+                    <p class="category">${product.category}</p>
+                    <p>$${product.price}</p>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosité Atelier | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #B0E0E6;
+            --accent: #FF6F61;
+            --dark: #444;
+            --pink: #ffc9e4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e3f2fd 100%);
+        }
+
+        /* Navigation bar style */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 8%;
+            position: fixed;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-family: 'Montserrat';
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main content area */
+        .hero {
+            padding: 15rem 8% 5rem;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+            height:100vh;
+        }
+
+        .hero-video{
+            position:absolute;
+            top:50%;
+            left:50;
+            transform:translate(-50%,-50%);
+            min-width:100%;
+            min-height:100%;
+            width:auto;
+            height:auto;
+            z-index:-1;
+            object-fit:cover;
+        }
+
+        .hero h1, .hero .cta-button{
+            position: relative;
+            z-index:1;
+            text-shadow:1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-family: 'Montserrat';
+            font-size: 4rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s forwards;
+        }
+
+        /* Product card */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 0 8%;
+        }
+
+        .product-card {
+            font-family: 'Roboto', sans-serif;
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(176,224,230,0.2);
+        }
+
+        /* Header button style */
+        .cta-button-header {
+            background: var(--primary);
+            color: white;
+            padding: 0.1rem 0.5rem;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Montserrat';
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Hero button style */
+        .cta-button-hero {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Montserrat';
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cta-button-hero:hover {
+            filter: brightness(1.05);
+            box-shadow: 0 5px 15px rgba(176,224,230,0.4);
+        }
+
+        /* Animation */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Wave decoration */
+        .wave-deco {
+            height: 100px;
+            background: linear-gradient(90deg, 
+                var(--primary) 0%, 
+                rgba(176,224,230,0.6) 50%, 
+                rgba(255,111,97,0.3) 100%);
+            mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 15c20-5 40-5 60 0s40 5 60 0v-15h-120z"/></svg>');
+        }
+
+        /* Image zoom effect */
+        .product-card img:hover{
+            transform: scale(1.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Search box style */
+        .search-box{
+            display:flex;
+            align-items:self-start;
+        }
+
+        #search-input{
+            padding:0.3rem 1rem;
+            border:1px solid var(--dark);
+            border-radius:20px 0 0 20px;
+            font-family:'Roboto', sans-serif;
+            color:var(--dark);
+            margin-right:0.5rem;
+        }
+
+        #search-button{
+            padding:0.3rem 0.4rem;
+            border-radius:0 20px 20px 0;
+            background:var(--primary);
+            color:white;
+            border:none;
+            cursor:pointer;
+            transition:0.3s;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <nav class="navbar">
+        <img src="img/logo.png" width="60" height="37.2" alt="logo">
+        <h2 style="color: var(--primary);"onclick="window.location.href='index.html'">Curiosité Atelier</h2>
+        <div class="nav-links">
+            <a href="Home_Page.html"><h2>Home</h2></a>
+            <a href="Features.html"><h2>Features</h2></a>
+            <a href="Men.html"><h2>Men</h2></a>
+            <a href="Women.html"><h2>Women</h2></a>
+            <a href="About.html"><h2>About</h2></a>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button" class="cta-button-header" type="button" aria-label="Search">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="view_video.mp4" type="video/mp4">
+        </video>
+        <h1>Wear Your Sky,<br>Own Your Style</h1>
+        <button class="cta-button-hero" onclick="window.location.href='Features.html'">Explore Collection</button>
+    </div>
+
+    <div class="wave-deco"></div>
+
+    <div class="product-grid">
+        <!-- Product cards will be dynamically generated by JS -->
+    </div>
+    <script>
+        // Dynamically load product cards
+        const products = [
+            { name: "Cloud Motion Tee", type: "men", color: "#B0E0E6", image:"img/Men_d/1.png" },
+            { name: "Wave Runner Hoodie", type: "women", color: "#FF6F61", image:"img/Men_d/2.png" },
+            { name: "Skyline Jogger", type: "men", color: "#B0E0E6", image:"img/Men_d/3.png" },
+            { name: "Ocean Breeze Dress", type: "women", color: "#FF6F61", image:"img/Men_d/4.png" }
+        ];
+
+        const grid = document.querySelector('.product-grid');
+        
+        function displayProducts(productsToRender) {
+            grid.innerHTML = '';
+            productsToRender.forEach((product, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" style="width:100%;height:auto;border-radius:15px;margin-bottom:1rem;">
+                    <h3>${product.name}</h3>
+                    <p>${product.type.toUpperCase()}'S COLLECTION</p>
+                `;
+                card.style.animationDelay = `${index * 0.2}s`;
+                grid.appendChild(card);
+            });
+        }
+
+        displayProducts(products);
+
+        // Scroll animation trigger
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 100) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Implement search functionality
+        document.getElementById('search-button').addEventListener('click', function(){
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const filteredProducts = products.filter(product => product.name.toLowerCase().includes(query));
+            displayProducts(filteredProducts);
+        })
+    </script>
+
+    
+</body>
+</html>

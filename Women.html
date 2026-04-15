@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosité Atelier | Women</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        // Navigation bar scrolling effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 100) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+    </script>
+
+    <style>
+        :root {
+            --primary: #B0E0E6;
+            --accent: #FF6F61;
+            --dark: #444;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } 
+        /*  page base Settings */
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            scroll-behavior: smooth;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e3f2fd 100%);
+        }
+
+        /* Navigation bar style */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 8%;
+            position: fixed;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-family: 'Montserrat';
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Navigation bar style */
+        .cta-button-header {
+            background: var(--primary);
+            color: white;
+            padding: 0.1rem 0.5rem;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Montserrat';
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Navigation bar style */
+        .search-box{
+            display:flex;
+            align-items:self-start;
+        }
+
+        #search-input{
+            padding:0.3rem 1rem;
+            border:1px solid var(--dark);
+            border-radius:20px 0 0 20px;
+            font-family:'Roboto', sans-serif;
+            color:var(--dark);
+            margin-right:0.5rem;
+        }
+
+        #search-button{
+            padding:0.3rem 0.4rem;
+            border-radius:0 20px 20px 0;
+            background:var(--primary);
+            color:white;
+            border:none;
+            cursor:pointer;
+            transition:0.3s;
+        }
+       
+        .banner {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slides img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: quickSwitch 25s infinite linear;
+        }
+
+        .slides img:nth-child(1) { animation-delay: 0s; }
+        .slides img:nth-child(2) { animation-delay: 5s; }
+        .slides img:nth-child(3) { animation-delay: 10s; }
+        .slides img:nth-child(4) { animation-delay: 15s; }
+        .slides img:nth-child(5) { animation-delay: 20s; }
+
+  
+        @keyframes quickSwitch {
+            0% { opacity: 1; }
+            18% { opacity: 1; }  
+            20% { opacity: 0; }  
+            100% { opacity: 0; }
+        }
+        
+        /*  === Overall layout===  */
+        .shop-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /*  === Left screening area ===  */
+        .filter-section {
+            width: 20%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-section h2 {
+            font-size: 24px;
+            color: #4A4A4A;
+            margin-bottom: 15px;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .filter-group input {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        /*  === Commodity display area on the right ===  */
+        .product-gallery {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding-left: 20px;
+        }
+
+        /*  Merchandise card style */
+        .product {
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            background: #fff;
+            transition: transform 0.3s;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product p {
+            margin: 8px 0;
+            font-size: 18px;
+            color: #444;
+        }
+
+        .product .category {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        /*  Merchandise card style */
+        @media (max-width: 768px) {
+            .shop-container {
+                flex-direction: column;
+            }
+
+            .filter-section {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .product-gallery {
+                width: 100%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <img src="img/logo.png" width="60" height="37.2" alt="logo">
+        <h2 style="color: var(--primary);"onclick="window.location.href='index.html'">Curiosité Atelier</h2>
+        <div class="nav-links">
+            <a href="Home_Page.html"><h2>Home</h2></a>
+            <a href="Features.html"><h2>Features</h2></a>
+            <a href="Men.html"><h2>Men</h2></a>
+            <a href="Women.html"><h2>Women</h2></a>
+            <a href="About.html"><h2>About</h2></a>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button" class="cta-button-header" type="button" aria-label="Search">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="banner">
+        <div class="slides">
+            <img src="img/W1.jpg">
+            <img src="img/W2.jpg">
+            <img src="img/W3.jpg">
+            <img src="img/W4.jpg">
+            <img src="img/W1.jpg">
+        </div>
+    </section>
+
+    <section class="shop-container">
+
+        <div class="filter-section">
+            <h2>Filter</h2>
+
+            <div class="filter-group">
+                <h3>Category</h3>
+                <label><input type="checkbox" value="T-shirt" > T-shirt</label>
+                <label><input type="checkbox" value="Hoodie"> Hoodies</label>
+                <label><input type="checkbox" value="Sweatshirts"> Sweatshirts</label>
+                <label><input type="checkbox" value="Skirts"> Skirts</label>
+                <label><input type="checkbox" value="Trousers"> Trousers</label>
+                <label><input type="checkbox" value="Top"> Tops</label>
+            </div>
+
+            <!-- Price Range 筛选 -->
+            <div class="filter-group">
+                <h3>Price Range</h3>
+                <label><input type="checkbox" value="low"> $10 - $50</label>
+                <label><input type="checkbox" value="medium"> $50 - $100</label>
+                <label><input type="checkbox" value="high"> $100+</label>
+            </div>
+        </div>
+
+    <div class="product-gallery">
+        <div class="product">
+            <img src="img/Women_d/IMG_3690.JPG" alt="T1">
+            <p class="category">T-shirt</p>
+            <p>$20</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3691.JPG" alt="T2">
+            <p class="category">T-shirt</p>
+            <p>$20</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3692.JPG" alt="T3">
+            <p class="category">T-shirt</p>
+            <p>$20</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3693.JPG" alt="T4">
+            <p class="category">T-shirt</p>
+            <p>$20</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3694.JPG" alt="T5">
+            <p class="category">T-shirt</p>
+            <p>$20</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3695.JPG" alt="Sw1">
+            <p class="category">Sweatshirt</p>
+            <p>$25</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3696.JPG" alt="Sw2">
+            <p class="category">Sweatshirt</p>
+            <p>$25</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3697.JPG" alt="Sw3">
+            <p class="category">Sweatshirt</p>
+            <p>$25</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3698.JPG" alt="H1">
+            <p class="category">Hoodie</p>
+            <p>$30</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3699.JPG" alt="H2">
+            <p class="category">Hoodie</p>
+            <p>$40</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3700.JPG" alt="H3">
+            <p class="category">Hoodie</p>
+            <p>$30</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3701.JPG" alt="H4">
+            <p class="category">Hoodie</p>
+            <p>$30</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3702.JPG" alt="Tt1">
+            <p class="category">Top</p>
+            <p>$15</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3703.JPG" alt="Sw4">
+            <p class="category">Sweatshirt</p>
+            <p>$25</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3704.JPG" alt="Sw5">
+            <p class="category">Sweatshirt</p>
+            <p>$25</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3705.JPG" alt="Sw6">
+            <p class="category">Sweatshirt</p>
+            <p>$60</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3706.JPG" alt="S1">
+            <p class="category">Skirt</p>
+            <p>$50</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3707.JPG" alt="S2">
+            <p class="category">Skirt</p>
+            <p>$25</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3708.JPG" alt="S3">
+            <p class="category">Skirt</p>
+            <p>$25</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3709.JPG" alt="S4">
+            <p class="category">Skirt</p>
+            <p>$25</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3710.JPG" alt="T6">
+            <p class="category">T-shirt</p>
+            <p>$20</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3711.JPG" alt="S7">
+            <p class="category">Skirt</p>
+            <p>$67</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3712.JPG" alt="S8">
+            <p class="category">Skirt</p>
+            <p>$20</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3713.JPG" alt="S9">
+            <p class="category">Skirt</p>
+            <p>$20</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3714.JPG" alt="S10">
+            <p class="category">Skirt</p>
+            <p>$20</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3715.JPG" alt="S11">
+            <p class="category">Skirt</p>
+            <p>$60</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3716.JPG" alt="Tr1">
+            <p class="category">Trouser</p>
+            <p>$50</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3717.JPG" alt="Tr2">
+            <p class="category">Trouser</p>
+            <p>$40</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3718.JPG" alt="Tr3">
+            <p class="category">Trouser</p>
+            <p>$70</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3719.JPG" alt="Tr4">
+            <p class="category">Trouser</p>
+            <p>$40</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3720.JPG" alt="Tr5">
+            <p class="category">Trouser</p>
+            <p>$59</p>
+        </div>
+
+        <div class="product">
+            <img src="img/Women_d/IMG_3721.JPG" alt="Tr6">
+            <p class="category">Trouser</p>
+            <p>$40</p>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+        // Add event listeners to filter options
+    document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+        // Gets the category selected by the user
+            const selectedCategories = Array.from(document.querySelectorAll('.filter-group input[type="checkbox"]:checked'))
+            .map(checkbox => checkbox.value.toLowerCase());
+        // Screening of goods
+            const filteredProducts = products.filter(product => selectedCategories.includes(product.category.toLowerCase()));
+            // Show filter results
+             displayProducts(filteredProducts);
+        });
+    });
+
+    const products = [
+        {name: 'T-shirt', category: 'T-shirt', price: 20, image: 'img/Women_d/IMG_3690.JPG'},
+        {name: 'T-shirt', category: 'T-shirt', price: 20, image: 'img/Women_d/IMG_3691.JPG'},
+        {name: 'T-shirt', category: 'T-shirt', price: 20, image: 'img/Women_d/IMG_3692.JPG'},
+        {name: 'T-shirt', category: 'T-shirt', price: 20, image: 'img/Women_d/IMG_3693.JPG'},
+        {name: 'T-shirt', category: 'T-shirt', price: 20, image: 'img/Women_d/IMG_3694.JPG'},
+        {name: 'Sweatshirt', category: 'Sweatshirts', price: 25, image: 'img/Women_d/IMG_3695.JPG'},
+        {name: 'Sweatshirt', category: 'Sweatshirts', price: 25, image: 'img/Women_d/IMG_3696.JPG'},
+        {name: 'Sweatshirt', category: 'Sweatshirts', price: 25, image: 'img/Women_d/IMG_3697.JPG'},
+        {name: 'Hoodie', category: 'Hoodie', price: 30, image: 'img/Women_d/IMG_3698.JPG'},
+        {name: 'Hoodie', category: 'Hoodie', price: 40, image: 'img/Women_d/IMG_3699.JPG'},
+        {name: 'Hoodie', category: 'Hoodie', price: 30, image: 'img/Women_d/IMG_3700.JPG'},
+        {name: 'Hoodie', category: 'Hoodie', price: 30, image: 'img/Women_d/IMG_3701.JPG'},
+        {name: 'Top', category: 'Top', price: 15, image: 'img/Women_d/IMG_3702.JPG'},
+        {name: 'Sweatshirt', category: 'Sweatshirts', price: 25, image: 'img/Women_d/IMG_3703.JPG'},
+        {name: 'Sweatshirt', category: 'Sweatshirts', price: 25, image: 'img/Women_d/IMG_3704.JPG'},
+        {name: 'Sweatshirt', category: 'Sweatshirts', price: 60, image: 'img/Women_d/IMG_3705.JPG'},
+        {name: 'Skirt', category: 'Skirt', price: 50, image: 'img/Women_d/IMG_3706.JPG'},
+        {name: 'Skirt', category: 'Skirt', price: 25, image: 'img/Women_d/IMG_3707.JPG'},
+        {name: 'Skirt', category: 'Skirt', price: 25, image: 'img/Women_d/IMG_3708.JPG'},
+        {name: 'Skirt', category: 'Skirt', price: 25, image: 'img/Women_d/IMG_3709.JPG'},
+        {name: 'T-shirt', category: 'T-shirt', price: 20, image: 'img/Women_d/IMG_3710.JPG'},
+        {name: 'Skirt', category: 'Skirts', price: 67, image: 'img/Women_d/IMG_3711.JPG'},
+        {name: 'Skirt', category: 'Skirts', price: 20, image: 'img/Women_d/IMG_3712.JPG'},
+        {name: 'Skirt', category: 'Skirts', price: 20, image: 'img/Women_d/IMG_3713.JPG'},
+        {name: 'Skirt', category: 'Skirts', price: 20, image: 'img/Women_d/IMG_3714.JPG'},
+        {name: 'Skirt', category: 'Skirts', price: 60, image: 'img/Women_d/IMG_3715.JPG'},
+        {name: 'Trouser', category: 'Trousers', price: 50, image: 'img/Women_d/IMG_3716.JPG'},
+        {name: 'Trouser', category: 'Trousers', price: 40, image: 'img/Women_d/IMG_3717.JPG'},
+        {name: 'Trouser', category: 'Trousers', price: 70, image: 'img/Women_d/IMG_3718.JPG'},
+        {name: 'Trouser', category: 'Trousers', price: 40, image: 'img/Women_d/IMG_3719.JPG'},
+        {name: 'Trouser', category: 'Trousers', price: 59, image: 'img/Women_d/IMG_3720.JPG'},
+        {name: 'Trouser', category: 'Trousers', price: 40, image: 'img/Women_d/IMG_3721.JPG'},
+    ];
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+    displayProducts(products);
+    
+    // Fixed button ID spelling error
+    const searchButton = document.getElementById('search-button');
+    
+    // Event listening for filters
+    document.querySelectorAll('.filter-group input').forEach(input => {
+        input.addEventListener('change', applyFilters);
+    });
+    
+    // Search for button click events
+    searchButton.addEventListener('click', function() {
+        applyFilters();
+    });
+
+    // Return key event for search input
+    document.getElementById('search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            applyFilters();
+        }
+    });
+    
+    // Navigation bar scrolling effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        navbar.style.boxShadow = window.scrollY > 100 ? '0 5px 20px rgba(0,0,0,0.1)' : 'none';
+    });
+});
+
+// Function to apply filters
+function applyFilters() {
+    const searchInput = document.getElementById('search-input').value.trim().toLowerCase();
+    const selectedCategories = Array.from(document.querySelectorAll('.filter-group input[type="checkbox"]:checked'))
+        .map(checkbox => checkbox.value.toLowerCase());
+    const selectedPriceRanges = Array.from(document.querySelectorAll('.filter-group input[type="checkbox"]:checked'))
+        .map(checkbox => checkbox.value.toLowerCase());
+
+    // Filter the products
+    const filteredProducts = products.filter(product => {
+        // Check if product matches the search query
+        const matchesSearch = product.name.toLowerCase().includes(searchInput);
+        
+        // Check if product matches the selected category filter
+        const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category.toLowerCase());
+        
+        // Check if product matches the selected price range
+        let matchesPrice = true;
+        if (selectedPriceRanges.length > 0) {
+            const price = product.price;
+            matchesPrice = selectedPriceRanges.some(range => {
+                if (range === 'low') return price >= 10 && price <= 50;
+                if (range === 'medium') return price > 50 && price <= 100;
+                if (range === 'high') return price > 100;
+                return false;
+            });
+        }
+        
+        return matchesSearch && matchesCategory && matchesPrice;
+    });
+
+    displayProducts(filteredProducts);
+}
+
+// Function to display filtered products
+function displayProducts(productsToDisplay) {
+    const productGallery = document.querySelector('.product-gallery');
+    productGallery.innerHTML = ''; // Clear existing products
+
+    productsToDisplay.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('product');
+        
+        productElement.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <p class="category">${product.category}</p>
+            <p>$${product.price}</p>
+        `;
+
+        productGallery.appendChild(productElement);
+    });
+}
+</script>
+
+</html>

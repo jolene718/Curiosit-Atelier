@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Demo | Add Product</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f0f9ff; color: #31405f; }
+    nav { display: flex; justify-content: space-between; align-items: center; background-color: #fff; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+    .nav-links { display: flex; gap: 15px; align-items: center; }
+    .nav-links a, .nav-links button { text-decoration: none; color: #5f6b8b; background: none; border: none; font-size: 1em; cursor: pointer; padding: 0; }
+    .nav-links a:hover, .nav-links button:hover { color: #ff9dbf; }
+    .logo { width: 100px; height: auto; }
+    .page { max-width: 760px; margin: 40px auto; padding: 0 20px 40px; }
+    .note, .add-product-container { background: #fff; border-radius: 12px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.08); padding: 28px; }
+    .note { margin-bottom: 20px; border-left: 4px solid #ff9dbf; }
+    .add-product-container h1 { margin-top: 0; font-size: 2rem; }
+    .input-group { margin-bottom: 16px; }
+    .input-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+    .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 12px; font-size: 1em; border: 1px solid #d0d6e1; border-radius: 8px; background-color: #f7f9fc; box-sizing: border-box; }
+    .input-group textarea { min-height: 120px; resize: vertical; }
+    .submit-button { width: 100%; padding: 14px; background-color: #ff9dbf; color: #fff; border: none; border-radius: 8px; font-size: 1.05em; cursor: pointer; }
+    .submit-button:hover { background-color: #ff7e98; }
+    .modal { display: none; position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center; z-index: 20; }
+    .modal-content { background: #fff; padding: 24px; border-radius: 10px; width: min(420px, calc(100% - 32px)); text-align: center; }
+    .modal-content button { margin-top: 10px; padding: 10px 20px; background-color: #ff9dbf; color: #fff; border: none; cursor: pointer; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="add-product.html">Add Product</a>
+      <a href="brands.html">Brands</a>
+    </div>
+    <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"></a>
+    <div class="nav-links">
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
+      <button type="button" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <p>You need a local demo account before adding products.</p>
+      <button type="button" onclick="redirectToLogin()">Go to Login</button>
+    </div>
+  </div>
+
+  <main class="page">
+    <section class="note">
+      <p>This seller workflow is now a front-end demo only. Product data stays in your browser storage, and no password or private seller profile is written into the catalogue.</p>
+    </section>
+
+    <section class="add-product-container">
+      <h1>Add a New Product</h1>
+      <form id="productForm">
+        <div class="input-group">
+          <label for="sellerName">Public Seller Name</label>
+          <input type="text" id="sellerName" name="seller_name" placeholder="e.g. Curiosite Atelier Studio" required>
+        </div>
+        <div class="input-group">
+          <label for="sellerEmail">Public Contact Email</label>
+          <input type="email" id="sellerEmail" name="seller_email" placeholder="hello@example.com" required>
+        </div>
+        <div class="input-group">
+          <label for="brandName">Brand Name</label>
+          <input type="text" id="brandName" name="brand_name" placeholder="Brand name" required>
+        </div>
+        <div class="input-group">
+          <label for="gender">Collection</label>
+          <select id="gender" name="gender" required>
+            <option value="women">Women</option>
+            <option value="men">Men</option>
+            <option value="unisex">Unisex</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="category">Category</label>
+          <input type="text" id="category" name="category" placeholder="T-shirt / Hoodie / Bag" required>
+        </div>
+        <div class="input-group">
+          <label for="condition">Condition</label>
+          <select id="condition" name="condition" required>
+            <option value="New">New</option>
+            <option value="Like new">Like new</option>
+            <option value="Pre-owned">Pre-owned</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="colour">Colour</label>
+          <input type="text" id="colour" name="colour" placeholder="Pink / Navy / White" required>
+        </div>
+        <div class="input-group">
+          <label for="size">Size</label>
+          <input type="text" id="size" name="size" placeholder="S / M / L / One size" required>
+        </div>
+        <div class="input-group">
+          <label for="location">Location</label>
+          <input type="text" id="location" name="location" placeholder="City, Country" required>
+        </div>
+        <div class="input-group">
+          <label for="price">Price (USD)</label>
+          <input type="number" id="price" name="price" min="1" step="0.01" required>
+        </div>
+        <div class="input-group">
+          <label for="productImage">Product Image</label>
+          <input type="file" id="productImage" name="product_image" accept="image/*" required>
+        </div>
+        <div class="input-group">
+          <label for="description">Short Description</label>
+          <textarea id="description" name="description" placeholder="Describe the piece, styling, and standout details."></textarea>
+        </div>
+        <button class="submit-button" type="submit">Add Product</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
