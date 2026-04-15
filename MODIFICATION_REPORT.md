@@ -28,6 +28,7 @@
 
 - Added `.gitignore` for OS files, editor files, compiled outputs, local env files, and large media candidates.
 - Added `README.md` and `GITHUB_PAGES.md` for GitHub presentation and deployment guidance.
+- Added `ASSET_UPLOAD_GUIDE.md`, created GitHub release `assets-v1`, and switched large media references to release URLs.
 
 ## Files That Should Not Be Public Without Your Confirmation
 
@@ -43,10 +44,11 @@
 
 - `view_video.mp4`
   Reason: very large file and not ideal for a normal GitHub portfolio repository.
-  Current handling: still in place for local preview, but marked for external hosting before publication.
+  Current handling: uploaded to GitHub Releases `assets-v1` and moved into `.private-review/release-assets/`.
 
 - Portrait images such as `img/pc.jpg`, `img/zzm.jpg`, `img/mjt.jpg`
   Reason: these are personal photos and should only remain public if everyone shown is comfortable with GitHub publication.
+  Current handling: removed from the public page, replaced with neutral initials, and moved into `.private-review/portraits/`.
 
 ## Large Asset Handling Plan
 
@@ -59,13 +61,11 @@
 - `view_video.mp4`
 - Current large banner and hero images above 1 MB
 
-### Recommended manual upload sequence
+### Release status
 
-1. Choose a host: GitHub Releases, Imgur, Tencent COS, or Cloudflare R2.
-2. Upload `view_video.mp4` and the large showcase images.
-3. Copy the final public URLs.
-4. Replace the remaining local asset paths in the HTML files with those URLs.
-5. Test the site locally and again on GitHub Pages.
+- Release created: `assets-v1`
+- Uploaded and linked: `view_video.mp4`, `banner1.jpg`, `banner2.jpg`, `banner3.jpg`, `banner5.jpg`, `model1.jpg`, `model2.jpg`, `model3.jpg`, `surfing.jpg`, `W1.jpg`, `W4.jpg`
+- Active pages updated: `Home_Page.html`, `Features.html`, `Men.html`, `Women.html`
 
 ## Remaining Optimization Ideas
 

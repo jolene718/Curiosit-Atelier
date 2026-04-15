@@ -8,6 +8,15 @@ I chose **GitHub Releases** for this project because it is the least disruptive 
 - It is a good fit for large static assets that should not live in normal repository history.
 - GitHub's official docs say a single release can include up to **1000 assets**, each asset must be **under 2 GiB**, and there is **no total release-size or bandwidth cap** listed for releases.
 
+## Current Project Status
+
+The first public asset bundle for this repository has already been created:
+
+- Repository: `jolene718/Curiosit-Atelier`
+- Release tag: `assets-v1`
+
+You can reuse the same release for now, or create `assets-v2` later if you want to upload updated media without changing old links.
+
 ## Assets Recommended for Upload
 
 - `view_video.mp4`

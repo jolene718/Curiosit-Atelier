@@ -27,8 +27,8 @@ Curiosite Atelier is a course web project that combines a fashion-brand showcase
 
 - The seller dashboard is a static front-end demo, not a production authentication system.
 - Product and account demo data stays in the local browser and is not sent to a server.
-- Large media files should not be committed directly to GitHub. See `GITHUB_PAGES.md` and `MODIFICATION_REPORT.md` for hosting guidance.
 - Large media files should not be committed directly to GitHub. See `GITHUB_PAGES.md`, `ASSET_UPLOAD_GUIDE.md`, and `MODIFICATION_REPORT.md` for hosting guidance.
+- Large release-hosted assets are now published through GitHub Releases under the `assets-v1` tag.
 
 ## GitHub Pages
 
