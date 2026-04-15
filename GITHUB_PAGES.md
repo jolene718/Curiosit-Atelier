@@ -21,7 +21,7 @@ For GitHub Pages, the cleanest option is:
 
 - Keep images under 1 MB in the repository when possible.
 - Host large media externally and replace local references with public URLs.
-- The current `view_video.mp4` is too large for a normal GitHub portfolio repo and should be moved to a release asset, cloud storage bucket, or video platform before publishing.
+- The original `view_video.mp4` was too large for a normal GitHub portfolio repo and is now served from GitHub Releases instead.
 - This project now uses GitHub Releases tag `assets-v1` for the large public media files.
 
 ## Suggested External Hosting Options
